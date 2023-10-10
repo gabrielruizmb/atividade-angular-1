@@ -1,0 +1,36 @@
+main {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("https://images.lifestyleasia.com/wp-content/uploads/sites/3/2022/11/30172503/batman-1989-film.jpeg");
+}
+
+a {
+    text-decoration-line: none;
+}
+
+table {
+    width: 50vw;
+    background-color: rgba(245, 245, 245, 0.575);
+    margin: 150px 0px 150px 0px;
+    border: 10px ridge black;
+}
+
+table thead {
+    border-bottom: 2px solid black;
+    font-weight: bold;
+}
+
+table thead a {
+    color: green;
+    font-size: 20px;
+}
+
+table tbody tr {
+    border-top: 1px solid black;
+}
+
+table tbody a {
+    color: blue;
+}

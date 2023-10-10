@@ -1,0 +1,41 @@
+<main>
+    <table>
+        <thead>
+            <tr>
+                <td>Nome</td>
+                <td>Idade</td>
+                <td>Opções</td>
+                <td class="add-button">
+                    <a (click) = "openModal(content)">
+                        +
+                    </a>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let person of personsList" class="table-cell">
+                <td *ngIf = "person.age > 30">
+                    {{person.name}}
+                </td>
+                <td *ngIf = "person.age > 30">
+                    {{person.age}}
+                </td>
+                <td class="edit-button"  
+                    *ngIf = "person.age > 30" 
+                    routerLink = "/admin/pessoas/editar/{{person.id}}">
+                    Editar
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Nova pessoa:</h4>
+            <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+            <app-persondetails (return) = "addOnList($event)"></app-persondetails>
+        </div>
+    </ng-template>
+</main>

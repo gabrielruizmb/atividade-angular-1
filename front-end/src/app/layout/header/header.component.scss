@@ -1,0 +1,16 @@
+header {
+    height: 10vh;
+    background-color: yellow;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-weight: bold;
+}
+
+header a {
+    text-decoration-line: none;
+}
+
+header a:hover {
+    text-decoration-line: underline;
+}

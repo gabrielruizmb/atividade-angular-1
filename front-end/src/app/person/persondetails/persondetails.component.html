@@ -1,0 +1,14 @@
+<div class="details-inputs">
+    <label for="name">Nome:</label> 
+    <br>
+    <input type="text" name="name" [(ngModel)]="person.name">
+    <br>
+    <label for="age">Idade:</label>
+    <br>
+    <input type="text" name="age" [(ngModel)]="person.age">
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click) = "save()">
+        Save
+    </button>
+</div>

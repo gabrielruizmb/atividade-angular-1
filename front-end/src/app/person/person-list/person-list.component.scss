@@ -1,0 +1,41 @@
+main {
+    background-image: url(
+        "https://www.torredevigilancia.com/wp-content/uploads/2020/08/xmen90s-1.jpg"
+    );
+    background-size: 60%;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    margin-top: 120px;
+    margin-bottom: 120px;
+    border-radius: 30px;
+    background-color: rgba(245, 245, 245, 0.568);
+    width: 50vw;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: bold;
+}
+
+table thead {
+    border-bottom: 2px solid black;
+}
+
+tr>td:first-child, td:last-child {
+    padding-left: 15px;
+}
+
+.table-cell {
+    border-top: 1px solid black;
+}
+
+.add-button {
+    color: green;
+    font-size: 20px;
+}
+
+.edit-button {
+    color: blue;
+}
