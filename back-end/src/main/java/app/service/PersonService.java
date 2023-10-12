@@ -24,4 +24,14 @@ public class PersonService {
 		);
 		personRepository.save(personDTO.convertToEntity());
 	}
+
+	public List<PersonDTO> getAll() {
+		List<PersonDTO> personDTOs = new ArrayList<>();
+		List<Person> dbPersons = personRepository.findAll();
+		
+		for(Person dbPerson : dbPersons) {
+			personDTOs.add(dbPerson.convertToDTO());
+		}
+		return personDTOs;
+	}
 }

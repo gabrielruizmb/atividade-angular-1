@@ -22,22 +22,21 @@ import app.service.PersonService;
 public class PersonController {
 	
 	@Autowired
-	private PersonService pessoaService;
+	private PersonService personService;
 	
-	// @GetMapping
-	// private ResponseEntity<List<PessoaDTO>> listAll(){
-	// 	try {		
-	// 		List<PessoaDTO> lista = pessoaService.listAll();
-	// 		return new ResponseEntity<>(lista, HttpStatus.OK);
-	// 	} catch (Exception e) {
-	// 		return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-	// 	}
-	// }
+	@GetMapping
+	private ResponseEntity<List<PersonDTO>> getAll() {
+		try {
+			return ResponseEntity.ok().body(personService.getAll());
+		} catch(Exception exception) {
+			return ResponseEntity.badRequest().body(null);
+		}
+	}
 	
 	@PostMapping
 	private ResponseEntity<String> save(@RequestBody @Validated PersonDTO personDTO){
 		try {		
-			pessoaService.post(personDTO);
+			personService.post(personDTO);
 			return ResponseEntity.created(null).body(null);
 		} catch (Exception exception) {
 			return ResponseEntity.badRequest().body(exception.getMessage());

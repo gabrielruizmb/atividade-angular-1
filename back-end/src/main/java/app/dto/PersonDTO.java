@@ -14,7 +14,6 @@ public record PersonDTO (
 ) {
 
     public Person convertToEntity() {
-        Person person = new Person(id, name, age);
-        return person;
+        return new Person(id, name, age);
     }
 }

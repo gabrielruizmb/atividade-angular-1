@@ -15,7 +15,7 @@ export class PersonListComponent {
   personsList: Person[] = [];
 
   constructor() {
-    //this.personService.findAll();
+    this.findAll();
     // this.personsList.push(new Person(1, "Charles Francis Chavier", 55));
     // this.personsList.push(new Person(2, "Scott Summers", 31));
     // this.personsList.push(new Person(3, "Alice Wonderland", 30));
@@ -28,17 +28,17 @@ export class PersonListComponent {
     // this.personsList.push(new Person(10, "Maximmus Décimus", 35));
   }
 
-  // findAll(){
-  //   this.personService.findAll().subscribe({
-  //     next: personsList => {
-  //       this.personsList = personsList;
-  //     },
-  //     error: error => {
-  //       alert('Error!');
-  //       console.log(error);
-  //     }     
-  //   });
-  // }
+  findAll(){
+    this.personService.findAll().subscribe({
+      next: personsList => {
+        this.personsList = personsList;
+      },
+      error: error => {
+        alert('Error!');
+        console.log(error);
+      }     
+    });
+  }
 
   openModal(content: any) {
     this.modalService.open(content);

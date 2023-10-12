@@ -13,9 +13,9 @@ export class PersonService {
 
   constructor() {}
 
-  // findAll(): Observable<Person[]> {
-  //   return this.http.get<Person[]>(this.API);
-  // }
+  findAll(): Observable<Person[]> {
+    return this.http.get<Person[]>(this.API);
+  }
 
   post(person: Person): Observable<string> {
     return this.http.post<string>(this.API, person);

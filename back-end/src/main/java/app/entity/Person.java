@@ -1,5 +1,6 @@
 package app.entity;
 
+import app.dto.PersonDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,4 +24,8 @@ public class Person {
 	private Long id;
 	private String name;
 	private int age;
+
+	public PersonDTO convertToDTO() {
+		return new PersonDTO(id, name, age);
+	}
 }
