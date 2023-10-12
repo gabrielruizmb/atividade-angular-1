@@ -13,6 +13,7 @@ import { PersondetailsComponent } from './person/persondetails/persondetails.com
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CarsListComponent } from './cars/cars-list/cars-list.component';
 import { CarsDetailsComponent } from './cars/cars-details/cars-details.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { CarsDetailsComponent } from './cars/cars-details/cars-details.component
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

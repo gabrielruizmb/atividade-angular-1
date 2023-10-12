@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Output, inject } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, Output, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Person } from '../person';
+import { PersonService } from 'src/app/services/person-service.service';
 
 @Component({
   selector: 'app-persondetails',
@@ -10,21 +11,34 @@ import { Person } from '../person';
 export class PersondetailsComponent {
 
   route = inject(ActivatedRoute);
-  person: Person = new Person(0, "Nome", 0);
+  personService = inject(PersonService);
+  @Input() person: Person = new Person();
+  // @Output() return = new EventEmitter<Person>();
 
-  @Output() return = new EventEmitter<Person>();
 
   constructor() {
-    let id = this.route.snapshot.paramMap.get('id');
+    // let id = this.route.snapshot.paramMap.get('id');
 
-    if(id) {
-      this.person = new Person(11, "James Howlett", 99);
-    } else {
-      this.person = new Person(0, "", 0);
-    }
+    // if(id) {
+    //   this.person = new Person(11, "James Howlett", 99);
+    // } else {
+    //   this.person = new Person(0, "", 0);
+    // }
   }
 
-  save() {
-    this.return.emit(this.person);
+  // save() {
+  //   this.return.emit(this.person);
+  // }
+
+  post() {
+    this.personService.post(this.person).subscribe({
+      next: response => {
+        console.log(response);
+        // this.person = new Person();
+      },
+      error: response => {
+        console.log(response.error);
+      }
+    });
   }
 }

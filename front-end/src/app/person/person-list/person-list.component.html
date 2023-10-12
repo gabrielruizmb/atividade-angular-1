@@ -2,6 +2,7 @@
     <table>
         <thead>
             <tr>
+                <td>Id</td>
                 <td>Nome</td>
                 <td>Idade</td>
                 <td>Opções</td>
@@ -14,6 +15,9 @@
         </thead>
         <tbody>
             <tr *ngFor = "let person of personsList" class="table-cell">
+                <td *ngIf = "person.age > 30">
+                    {{person.id}}
+                </td>
                 <td *ngIf = "person.age > 30">
                     {{person.name}}
                 </td>
@@ -35,7 +39,7 @@
             <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
         </div>
         <div class="modal-body">
-            <app-persondetails (return) = "addOnList($event)"></app-persondetails>
+            <app-persondetails></app-persondetails>
         </div>
     </ng-template>
 </main>
