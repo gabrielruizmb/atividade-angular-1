@@ -18,10 +18,6 @@ public class PersonService {
 	private PersonRepository personRepository;
 	
 	public void post(PersonDTO personDTO){
-		Assert.isTrue(
-			personDTO.name() != "",
-			"O nome não pode estar em branco."
-		);
 		personRepository.save(personDTO.convertToEntity());
 	}
 

@@ -13,6 +13,7 @@ export class PersonListComponent {
   modalService = inject(NgbModal);
   personService = inject(PersonService);
   personsList: Person[] = [];
+  personToUpdate: Person = new Person();
 
   constructor() {
     this.findAll();
@@ -44,8 +45,12 @@ export class PersonListComponent {
     this.modalService.open(content);
   }
 
-  // addOnList(person: Person) {
-  //   this.personsList.push(person);
-  //   this.modalService.dismissAll();
-  // }
+  openModalToEdit(content:any, person: Person) {
+    this.personToUpdate = person;
+    this.modalService.open(content);
+  }
+
+  reloadPersonsList(person: Person) {
+    this.findAll();
+  }
 }

@@ -13,7 +13,7 @@ export class PersondetailsComponent {
   route = inject(ActivatedRoute);
   personService = inject(PersonService);
   @Input() person: Person = new Person();
-  // @Output() return = new EventEmitter<Person>();
+  @Output() return = new EventEmitter<Person>();
 
 
   constructor() {
@@ -30,7 +30,7 @@ export class PersondetailsComponent {
   //   this.return.emit(this.person);
   // }
 
-  post() {
+  save() {
     this.personService.post(this.person).subscribe({
       next: response => {
         console.log(response);
@@ -38,6 +38,8 @@ export class PersondetailsComponent {
       },
       error: response => {
         console.log(response.error);
+        console.log(response.error.name);
+        console.log(response.error.age);
       }
     });
   }

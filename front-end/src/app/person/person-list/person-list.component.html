@@ -26,7 +26,7 @@
                 </td>
                 <td class="edit-button"  
                     *ngIf = "person.age > 30" 
-                    routerLink = "/admin/pessoas/editar/{{person.id}}">
+                    (click) = "openModalToEdit(content, person)">
                     Editar
                 </td>
             </tr>
@@ -39,7 +39,10 @@
             <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
         </div>
         <div class="modal-body">
-            <app-persondetails></app-persondetails>
+            <app-persondetails
+                [person] = "personToUpdate" 
+                (return) = "reloadPersonsList($event)">
+            </app-persondetails>
         </div>
     </ng-template>
 </main>
