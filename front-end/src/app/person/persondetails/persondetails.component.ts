@@ -13,7 +13,7 @@ export class PersondetailsComponent {
   route = inject(ActivatedRoute);
   personService = inject(PersonService);
   @Input() person: Person = new Person();
-  @Output() return = new EventEmitter<Person>();
+  @Output() return = new EventEmitter();
 
 
   constructor() {
@@ -31,16 +31,31 @@ export class PersondetailsComponent {
   // }
 
   save() {
-    this.personService.post(this.person).subscribe({
-      next: response => {
-        console.log(response);
-        // this.person = new Person();
-      },
-      error: response => {
-        console.log(response.error);
-        console.log(response.error.name);
-        console.log(response.error.age);
-      }
-    });
+    if(this.person.id === undefined) {
+      this.personService.post(this.person).subscribe({
+        next: response => {
+          console.log(response);
+          // this.person = new Person();
+        },
+        error: response => {
+          console.log(response.error.name);
+          console.log(response.error.age);
+        }
+      });
+    } else {
+      this.personService.put(this.person.id, this.person).subscribe({
+        next: response => {
+          console.log(response);
+        },
+        error: response => {
+          console.log(response.error.name);
+          console.log(response.error.age);
+        }
+      });
+    }
+  }
+
+  closeModalAndReloadList(object: object) {
+    this.return.emit(object);
   }
 }

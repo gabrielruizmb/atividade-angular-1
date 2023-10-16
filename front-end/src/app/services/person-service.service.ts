@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Person } from '../person/person';
@@ -19,5 +19,9 @@ export class PersonService {
 
   post(person: Person): Observable<string> {
     return this.http.post<string>(this.API, person);
+  }
+
+  put(id: number, person: Person): Observable<string> {
+    return this.http.put<string>(this.API + "/" + id, person);
   }
 }

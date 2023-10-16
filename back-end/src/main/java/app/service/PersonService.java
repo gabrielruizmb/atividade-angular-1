@@ -17,7 +17,15 @@ public class PersonService {
 	@Autowired
 	private PersonRepository personRepository;
 	
-	public void post(PersonDTO personDTO){
+	public void post(PersonDTO personDTO) {
+		personRepository.save(personDTO.convertToEntity());
+	}
+
+	public void put(Long id, PersonDTO personDTO) {
+		Assert.isTrue(
+			personRepository.existsById(id) && id == personDTO.id(), 
+			"Usuário não encontrado."
+		);
 		personRepository.save(personDTO.convertToEntity());
 	}
 

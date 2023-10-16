@@ -1,4 +1,13 @@
 <form (ngSubmit) = "save()" method="post">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Nova pessoa:</h4>
+        <button 
+            type="button" 
+            class="btn-close" 
+            aria-label="Close" 
+            (click) = "closeModalAndReloadList($event)"
+        ></button>
+    </div>
     <label for="name">Nome:</label> 
     <br>
     <input type="text" name="name" [(ngModel)]="person.name">

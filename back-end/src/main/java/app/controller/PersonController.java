@@ -4,11 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,11 +37,24 @@ public class PersonController {
 	}
 	
 	@PostMapping
-	private ResponseEntity<String> save(@RequestBody @Validated PersonDTO personDTO){
+	private ResponseEntity<String> post(@RequestBody @Validated PersonDTO personDTO){
 		try {		
 			personService.post(personDTO);
 			return ResponseEntity.created(null).body(null);
 		} catch (Exception exception) {
+			return ResponseEntity.badRequest().body(exception.getMessage());
+		}
+	}
+
+	@PutMapping("/{id}")
+	private ResponseEntity<String> put(
+		@PathVariable Long id, 
+		@RequestBody @Validated PersonDTO personDTO
+	) {
+		try {
+			personService.put(id, personDTO);
+			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+		} catch(Exception exception) {
 			return ResponseEntity.badRequest().body(exception.getMessage());
 		}
 	}
