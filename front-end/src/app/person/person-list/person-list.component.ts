@@ -50,7 +50,8 @@ export class PersonListComponent {
     this.modalService.open(content);
   }
 
-  reloadPersonsList(person: Person) {
+  reloadPersonsList(object: object) {
     this.findAll();
+    this.modalService.dismissAll();
   }
 }

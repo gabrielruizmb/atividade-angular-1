@@ -13,7 +13,7 @@ export class PersondetailsComponent {
   route = inject(ActivatedRoute);
   personService = inject(PersonService);
   @Input() person: Person = new Person();
-  @Output() return = new EventEmitter<Person>();
+  @Output() return = new EventEmitter();
 
 
   constructor() {
@@ -42,5 +42,9 @@ export class PersondetailsComponent {
         console.log(response.error.age);
       }
     });
+  }
+
+  closeModalAndReloadList(object: object) {
+    this.return.emit(object);
   }
 }
