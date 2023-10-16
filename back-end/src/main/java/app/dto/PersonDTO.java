@@ -11,7 +11,7 @@ public record PersonDTO (
 
     @Max(200)
     int age
-) {
+    ) {
 
     public Person convertToEntity() {
         return new Person(id, name, age);
