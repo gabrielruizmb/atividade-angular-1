@@ -24,10 +24,18 @@
                 <td *ngIf = "person.age > 30">
                     {{person.age}}
                 </td>
-                <td class="edit-button"  
+                <td 
+                    class="options-cell"
                     *ngIf = "person.age > 30" 
                     (click) = "openModalToEdit(content, person)">
-                    Editar
+                    <img 
+                        src="../../../assets/pencil-icon.svg" 
+                        alt="Ícone de uma lápis para editar."
+                    >
+                    <img 
+                        src="../../../assets/trash-icon.svg" 
+                        alt="Ícone de lata de lixo para excluír."
+                    >
                 </td>
             </tr>
         </tbody>

@@ -2,3 +2,12 @@
 
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
+
+.edit-color {
+    color: blue;
+}
+
+.options-cell {
+    display: flex;
+    padding-top: 4px;
+}
