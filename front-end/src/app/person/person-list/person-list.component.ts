@@ -13,7 +13,8 @@ export class PersonListComponent {
   modalService = inject(NgbModal);
   personService = inject(PersonService);
   personsList: Person[] = [];
-  personToUpdate: Person = new Person();
+  filteredPeopleList: Person[] = [];
+  personToSend: Person = new Person();
 
   constructor() {
     this.findAll();
@@ -33,6 +34,11 @@ export class PersonListComponent {
     this.personService.findAll().subscribe({
       next: personsList => {
         this.personsList = personsList;
+        this.personsList.forEach(person => {
+          if(person.age > 30) {
+            this.filteredPeopleList.push(person);
+          }
+        });
       },
       error: error => {
         alert('Error!');
@@ -45,13 +51,24 @@ export class PersonListComponent {
     this.modalService.open(content);
   }
 
-  openModalToEdit(content:any, person: Person) {
-    this.personToUpdate = person;
+  openModalToEdit(content: any, person: Person) {
+    this.personToSend = person;
     this.modalService.open(content);
   }
 
   reloadPersonsList(object: object) {
     this.findAll();
     this.modalService.dismissAll();
+  }
+
+  delete(id: number) {
+    this.personService.delete(id).subscribe({
+      next: response => {
+        console.log(response);
+      },
+      error: response => {
+        console.log(response);
+      }
+    });
   }
 }

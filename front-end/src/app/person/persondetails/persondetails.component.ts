@@ -12,6 +12,7 @@ export class PersondetailsComponent {
 
   route = inject(ActivatedRoute);
   personService = inject(PersonService);
+  @Input() form!: String;
   @Input() person: Person = new Person();
   @Output() return = new EventEmitter();
 
@@ -30,7 +31,8 @@ export class PersondetailsComponent {
   //   this.return.emit(this.person);
   // }
 
-  save() {
+  onSubmit() {
+
     if(this.person.id === undefined) {
       this.personService.post(this.person).subscribe({
         next: response => {
