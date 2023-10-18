@@ -17,8 +17,19 @@
 
 .default-form fieldset{
     background-color: rgba(0, 0, 255, 0.507);
+    padding: 10px;
 }
 
 .default-form fieldset legend{
-    background-color: blue
+    background-color: rgba(0, 255, 34, 0.733)
+}
+
+.details-input-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.details-buttons-box {
+    display: flex;
+    justify-content: center;
 }
