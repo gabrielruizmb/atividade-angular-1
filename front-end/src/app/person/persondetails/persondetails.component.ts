@@ -19,6 +19,7 @@ export class PersondetailsComponent {
 
   constructor() {
     // let id = this.route.snapshot.paramMap.get('id');
+    // let option = this.route.snapshot.paramMap.get('option');
 
     // if(id) {
     //   this.person = new Person(11, "James Howlett", 99);

@@ -15,7 +15,9 @@ const routes: Routes = [
     { path: "pessoas/novo", component: PersondetailsComponent },
     { path: "pessoas/editar/:id", component: PersondetailsComponent },
     { path: "carros", component: CarsListComponent },
-    { path: "carros/novo", component: CarsDetailsComponent }
+    { path: "carros/:id", component: CarsDetailsComponent },
+    { path: "carros/novo", component: CarsDetailsComponent },
+    { path: "carros/:action/:id", component: CarsDetailsComponent }
   ] }
 ];
 

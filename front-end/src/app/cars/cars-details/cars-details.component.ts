@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-cars-details',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class CarsDetailsComponent {
 
+  route = inject(ActivatedRoute);
+
+  constructor() {
+    let id = this.route.snapshot.paramMap.get('id');
+    let action = this.route.snapshot.paramMap.get('action');
+    console.log(id, action);
+  }
 }
