@@ -1,19 +1,24 @@
 <main>
     <form action="" class="default-form">
-        <fieldset>
-            <legend *ngIf = "formAction === 'cadastrar'">Novo carro:</legend>
+
+        <fieldset *ngIf = "formAction === 'exibir' || formAction === 'excluir'">
+            <p>Teste</p>
+        </fieldset>
+
+        <fieldset *ngIf = "formAction === 'cadastrar' || formAction === 'editar'">
+            <!-- <legend *ngIf = "formAction === 'cadastrar'">Novo carro:</legend>
             <legend *ngIf = "formAction === 'exibir'">Exibir Carro:</legend>
             <legend *ngIf = "formAction === 'editar'">Editar carro:</legend>
-            <legend *ngIf = "formAction === 'excluir'">Excluír carro:</legend>
+            <legend *ngIf = "formAction === 'excluir'">Excluír carro:</legend> -->
 
             <div class="details-input-box">
                 <label for="">Carro:</label>
-                <input type="text">
+                <input type="text" value="Impala">
             </div>
             <br>
             <div class="details-input-box">
                 <label for="">Ano:</label>
-                <input type="number">
+                <input type="number" value="67">
             </div>
             <br>
             <div class="details-buttons-box">
