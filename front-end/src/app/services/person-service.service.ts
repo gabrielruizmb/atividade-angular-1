@@ -17,11 +17,19 @@ export class PersonService {
     return this.http.get<Person[]>(this.API);
   }
 
+  getOne(id: number): Observable<Person> {
+    return this.http.get<Person>(this.API + "/" + id);
+  }
+
   post(person: Person): Observable<string> {
     return this.http.post<string>(this.API, person);
   }
 
   put(id: number, person: Person): Observable<string> {
     return this.http.put<string>(this.API + "/" + id, person);
+  }
+  
+  delete(id: number): Observable<string> {
+    return this.http.delete<string>(this.API + "/" + id);
   }
 }

@@ -2,11 +2,11 @@ export class Car {
 
     id!: number;
     name!: string;
-    year!: number;
+    age!: number;
 
-    constructor(id: number, name: string, year: number) {
+    constructor(id: number, name: string, age: number) {
         this.id = id;
         this.name = name;
-        this.year = year;
+        this.age = age;
     }
 }

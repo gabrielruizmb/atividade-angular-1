@@ -14,20 +14,30 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor = "let person of personsList" class="table-cell">
-                <td *ngIf = "person.age > 30">
+            <tr *ngFor = "let person of filteredPeopleList" class="table-cell">
+                <td>
                     {{person.id}}
                 </td>
-                <td *ngIf = "person.age > 30">
+                <td>
                     {{person.name}}
                 </td>
-                <td *ngIf = "person.age > 30">
+                <td>
                     {{person.age}}
                 </td>
-                <td class="edit-button"  
-                    *ngIf = "person.age > 30" 
-                    (click) = "openModalToEdit(content, person)">
-                    Editar
+                <td>
+                    <div class="options-box">
+                        <img 
+                            (click) = "openModalToEdit(content, person)"
+                            src="../../../assets/pencil-icon.svg" 
+                            alt="Ícone de uma lápis para editar."
+                        >
+                        <span>|</span>
+                        <img 
+                            (click) = "delete(person.id)"
+                            src="../../../assets/trash-icon.svg" 
+                            alt="Ícone de lata de lixo para excluír."
+                        >
+                    </div>
                 </td>
             </tr>
         </tbody>
@@ -36,7 +46,7 @@
     <ng-template #content let-c="close" let-d="dismiss">
         <div class="modal-body">
             <app-persondetails
-                [person] = "personToUpdate" 
+                [person] = "personToSend" 
                 (return) = "reloadPersonsList($event)">
             </app-persondetails>
         </div>

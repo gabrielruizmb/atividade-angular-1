@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Car } from '../car';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PersonService } from 'src/app/services/person-service.service';
 
 @Component({
   selector: 'app-cars-list',
@@ -9,16 +9,24 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class CarsListComponent {
   
-  modalService = inject(NgbModal);
+  personService = inject(PersonService);
   carsList: Car[] = [];
 
   constructor() {
-    this.carsList.push(new Car(1, "Chevrolett Impala", 1967));
-    this.carsList.push(new Car(2, "Ford Corcel", 1981));
-    this.carsList.push(new Car(3, "Ford Mustang", 1965));
+    // this.carsList.push(new Car(1, "Chevrolett Impala", 1967));
+    // this.carsList.push(new Car(2, "Ford Corcel", 1981));
+    // this.carsList.push(new Car(3, "Ford Mustang", 1965));
+    this.getAll();
   }
 
-  openModal(modal: any) {
-    this.modalService.open(modal);
+  getAll() {
+    this.personService.findAll().subscribe({
+      next: carsList => {
+        this.carsList = carsList;
+      },
+      error: response => {
+        console.log(response);
+      }
+    });
   }
 }

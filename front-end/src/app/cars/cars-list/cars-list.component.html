@@ -6,7 +6,7 @@
                 <td>Ano</td>
                 <td>Opções</td>
                 <td>
-                    <a (click) = "openModal(modal)">
+                    <a href="admin/carros/novo">
                         +
                     </a>
                 </td>
@@ -14,22 +14,24 @@
         </thead>
         <tbody>
             <tr *ngFor = "let car of carsList">
-                <td>{{car.name}}</td>
-                <td>{{car.year}}</td>
-                <td class="edit-button">
-                    <a href="">Editar</a>
+                <td><a href="admin/carros/exibir/{{car.id}}">{{car.name}}</a></td>
+                <td>{{car.age}}</td>
+                <td class="options-box">
+                    <a href="admin/carros/editar/{{car.id}}">
+                        <img
+                        src="../../../assets/pencil-icon.svg" 
+                        alt="Ícone de um lápis para editar."
+                        >
+                    </a>
+                    <span> | </span>
+                    <a href="admin/carros/excluir/{{car.id}}">
+                        <img 
+                            src="../../../assets/trash-icon.svg" 
+                            alt="Ícone de uma lixeira para excluír."
+                        >
+                    </a>
                 </td>
             </tr>
         </tbody>
     </table>
-
-    <ng-template #modal let-c="close" let-d="dismiss">
-        <div class="modal-header">
-            <h4 class="modal-title" id="modal-basic-title">Novo carro:</h4>
-            <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
-        </div>
-        <div class="modal-body">
-            <app-cars-details></app-cars-details>
-        </div>
-    </ng-template>
 </main>

@@ -2,3 +2,34 @@
 
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
+
+.edit-color {
+    color: blue;
+}
+
+.options-box {
+    display: flex;
+}
+
+.options-box span {
+    margin: 0px 5px 0px 5px;
+}
+
+.default-form fieldset{
+    background-color: rgba(0, 0, 255, 0.507);
+    padding: 10px;
+}
+
+.default-form fieldset legend{
+    background-color: rgba(0, 255, 34, 0.733)
+}
+
+.details-input-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.details-buttons-box {
+    display: flex;
+    justify-content: center;
+}

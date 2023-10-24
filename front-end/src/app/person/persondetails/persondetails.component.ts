@@ -12,12 +12,14 @@ export class PersondetailsComponent {
 
   route = inject(ActivatedRoute);
   personService = inject(PersonService);
+  @Input() form!: String;
   @Input() person: Person = new Person();
   @Output() return = new EventEmitter();
 
 
   constructor() {
     // let id = this.route.snapshot.paramMap.get('id');
+    // let option = this.route.snapshot.paramMap.get('option');
 
     // if(id) {
     //   this.person = new Person(11, "James Howlett", 99);
@@ -30,7 +32,8 @@ export class PersondetailsComponent {
   //   this.return.emit(this.person);
   // }
 
-  save() {
+  onSubmit() {
+
     if(this.person.id === undefined) {
       this.personService.post(this.person).subscribe({
         next: response => {

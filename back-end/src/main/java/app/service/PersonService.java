@@ -29,6 +29,14 @@ public class PersonService {
 		personRepository.save(personDTO.convertToEntity());
 	}
 
+	public void delete(Long id) {
+		Assert.isTrue(
+			personRepository.existsById(id), 
+			"Usuário não encontrado"
+		);
+		personRepository.deleteById(id);
+	}
+
 	public List<PersonDTO> getAll() {
 		List<PersonDTO> personDTOs = new ArrayList<>();
 		List<Person> dbPersons = personRepository.findAll();
